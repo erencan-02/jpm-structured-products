@@ -1,0 +1,122 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[usenames]{color}
+\usepackage{xcolor}
+\usepackage{bbm}
+\usepackage[bookmarks,pdfstartview=FitH,a4paper,pdfborder={0 0 0}]{hyperref}
+\usepackage{textcomp}
+\usepackage{course}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[acronym]{glossaries}
+
+\graphicspath{{figures/}}
+
+\newacronym{pppn}{PPPN}{Partially Principal Protected Note}
+\newacronym{jpm}{JPM}{JPMorgan Chase \& Co}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{#1}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\fancyhf{}
+\fancyhead[RO]{\nouppercase{\footnotesize\sc\leftmark\ \hrulefill\ \thepage}}
+\fancyhead[RE]{\nouppercase{\footnotesize\sc\thepage\ \hrulefill\ }}
+\renewcommand{\headrulewidth}{0pt}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+\hbox{}%
+\thispagestyle{empty}%
+\clearpage%
+\if@twocolumn\hbox{}\clearpage\fi\fi\fi}
+\makeatother
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% float placement
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\dblfloatpagefraction}{0.7}
+
+\sloppy
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+\edef\today{%
+\ifcase\month\or
+January\or February\or March\or April\or May\or June\or July\or
+August\or September\or October\or November\or December\fi\ \number\year}
+
+\title{\vspace*{40mm}
+  \bfseries\sf Fundamentals of Financial Mathematics\\
+  - Home Assignment -\\[20mm]
+  \Large\bfseries\sf Design of Structured Products:\\
+  \Large\bfseries\sf JPMorgan Chase \& Co \\[40mm]
+}
+
+\author{\sf Eren Can}
+\date{\sf \today{}}
+
+
+\begin{document}
+
+\begin{figure}
+  \parbox[t]{125mm}{
+    \vspace*{6mm}
+    \scriptsize\sf           Faculty of Science\\
+    \scriptsize\sf           Department of Statistics and Risk \\
+    \scriptsize\sf\bfseries  Financial Mathematics \\
+    \scriptsize\sf           Prof. Dr. Wim Schoutens \\
+    }
+  \parbox[t]{40mm}{
+    \begin{flushright}
+      \includegraphics[height=15mm]{logo.pdf}
+    \end{flushright}}
+\end{figure}
+
+\maketitle
+\thispagestyle{empty}
+\raggedbottom
+
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+
+\section{Market Data and General Setting}
+    \input{sections/introduction}
+
+\section{Partially Principal Protected Note}
+    \input{sections/pppn}
+
+\newpage
+\section{Airbag Note}
+    \input{sections/airbag}
+
+\newpage
+\section{Summary and Conclusion}
+    \input{sections/conclusion}
+
+\cleardoublepage
+\appendix
+    \input{sections/appendix}
+\end{document}

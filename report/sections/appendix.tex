@@ -1,0 +1,38 @@
+\section{Monte Carlo Simulation}
+\label{appendix-monte-carlo-simulation}
+
+This appendix describes the Monte Carlo simulation used to estimate the expected payoffs of both products.
+The code is available in the accompanying notebook.
+
+\subsection{Model and Discretisation}
+The stock price follows a geometric Brownian motion with drift $\mu$ and volatility $\sigma$,
+\[
+    dS_t = \mu S_t\, dt + \sigma S_t\, dW_t,
+\]
+which we discretise with the Euler--Maruyama scheme:
+\[
+    S_{t+\Delta t} = S_t + \mu S_t \Delta t + \sigma S_t \sqrt{\Delta t}\,\epsilon_t,
+\]
+where $\Delta t$ is the time step and the $\epsilon_t \sim \mathcal{N}(0,1)$ are independent.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Simulate $n$ paths of the stock price from $S_0$ up to maturity $T$.
+    \item For each path $i$, evaluate the quantity of interest $X_i$ at maturity: the premium $(K_1 - S_T)^+ + (S_T - K_2)^+$ for the \gls{pppn}, and the payoff factor $\varphi_{p,A}(S_T)$ from \eqref{eq-airbag-replication-phi} for the Airbag Note.
+    \item Estimate the expectation by the sample mean
+    \[
+        \mathbb{E}[X] \approx \hat{\mathbb{E}}[X] = \frac{1}{n} \sum_{i=1}^{n} X_{i}.
+    \]
+\end{enumerate}
+With $n = 10^4$, the standard error is $1.12$ for the expected \gls{pppn} premium and $0.003$ for the expected Airbag payoff factor.
+
+\subsection{Parameters}
+\begin{itemize}
+    \item Initial stock price: $S_0 = 320.41$
+    \item Maturity: $T = 14/12 \approx 1.167$ years
+    \item Number of time steps: $n_D = 294$, the NYSE trading days between November 12, 2025, and January 15, 2027
+    \item Time step: $\Delta t = T / n_D$
+    \item Drift: $\mu = 252 \cdot \overline{\log(S_{d+1}/S_d)} = 0.2347$, the annualised mean daily log-return of the dividend-adjusted closing price over the past five years
+    \item Implied volatility: $\sigma = 0.289$
+    \item Number of paths: $n = 10{,}000$
+\end{itemize}

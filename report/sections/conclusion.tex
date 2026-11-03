@@ -1,0 +1,36 @@
+In this report, we presented two structured products on \gls{jpm}, a \glsreset{pppn}\gls{pppn} and an Airbag Note, both built from a zero-coupon bond and vanilla European options.
+Table~\ref{tab:structured-products-comparison} compares them.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparison of the two structured products.}
+    \label{tab:structured-products-comparison}
+    \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{6cm}@{}}
+    \toprule
+    \textbf{Aspect} & \textbf{PPPN} & \textbf{Airbag Note} \\
+    \midrule
+    Structure &
+    90\% capital protection. Pays a premium if the stock moves out of the corridor $[270, 350]$ in either direction. &
+    Full capital protection down to the airbag level $A = 256.33$. Participates partially ($p = 0.690$) in gains. \\[2mm]
+
+    Replication &
+    Zero-coupon bond worth $0.9\,N e^{-rT}$, long $EP(270,T)$ and long $EC(350,T)$. &
+    Zero-coupon bond worth $N e^{-rT}$, long $EC(S_0,T)$ and short $EP(A,T)$. \\[2mm]
+
+    Issuer margin & $0.5\%$ & $0.5\%$ \\[2mm]
+
+    Expected growth (Monte Carlo) &
+    $\hat{\mathbb{E}}[\text{Payoff}(S_T)]/N = 1.198$ &
+    $\hat{\mathbb{E}}[\varphi_{p,A}(S_T)] = 1.234$ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+The \gls{pppn} combines partial capital protection with exposure to large moves in either direction.
+The Airbag Note instead focuses on downside protection: the investor keeps the full capital as long as \gls{jpm} stays above the airbag level and participates in its gains, while moderate losses are absorbed.
+Both products are therefore aimed at risk-conscious rather than purely risk-seeking investors, that is, at investors who want their capital protected to some degree but still want to benefit from rising prices.
+
+Monte Carlo simulations based on the historical drift of \gls{jpm} point to favourable expected performance for both products.
+For the \gls{pppn}, the present value of the expected premium is more than twice the cost of the two options.
+For the Airbag Note, the expected payoff factor is above one, and a loss occurs in fewer than one in ten simulated scenarios.
+These estimates rely on \gls{jpm}'s strong performance over the past five years continuing, so they should be read as indicative rather than as a forecast.

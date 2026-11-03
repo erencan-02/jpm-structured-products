@@ -1,0 +1,16 @@
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/*.glo
+report/*.ist
+report/*.acn
+report/*.synctex.gz
+report/main.pdf
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
